@@ -1,0 +1,7 @@
+<div>
+  <ul *ngFor="let foro of foros">
+    <li>
+      <p [routerLink]="['/foro/foro-view', foro.id]">{{foro.id}}. {{foro.titulo}} | {{foro.moderador}} </p>
+    </li>
+  </ul>
+</div>

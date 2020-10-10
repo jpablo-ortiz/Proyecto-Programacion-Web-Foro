@@ -1,0 +1,21 @@
+<html>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <div class="mat-app-background basic-container"></div>
+
+  <main>
+
+    <nav>
+      <p class="title">/Letters_</p>
+
+    <ul>
+      <li><a [routerLink]="['/foro/foro-list']">Forum list</a></li>
+      <li><a [routerLink]="['/login']">Log In</a></li>
+    </ul>
+
+    </nav>
+
+  <div> <router-outlet></router-outlet> </div>
+  </main>
+
+</html>
+<!-- lo que esta en el li con routerLink, sera la barra de menu, entonces puedes cambiarlo como quieras, pero toca con router-->

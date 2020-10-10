@@ -1,0 +1,15 @@
+li {
+  display: inline-flex;
+}
+
+p {
+  border: solid 2px black;
+  padding: 4px;
+  margin: 0px auto;
+  display: inline;
+}
+
+button {
+  margin: 0px 10px;
+  height: 20px;
+}

@@ -1,0 +1,28 @@
+li {
+  border: solid 2px black;
+  display: inline-flex;
+}
+
+div .info {
+  /*border: solid 2px black;*/
+  padding: 15px;
+  margin: 0px auto;
+  display: inline;
+}
+
+div h2 {
+  margin: 1px;
+}
+
+div p {
+  margin: 5px;
+}
+
+button {
+  margin: 10px 10px;
+  height: 20px;
+}
+
+.usuario {
+  float: right;
+}

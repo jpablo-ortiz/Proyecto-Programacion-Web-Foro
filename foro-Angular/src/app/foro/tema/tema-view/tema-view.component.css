@@ -1,0 +1,25 @@
+li {
+  border: solid 2px black;
+}
+
+div {
+  display: inline-flex;
+}
+
+div p {
+  margin: 5px;
+}
+
+button {
+  margin: 5px 10px;
+  height: 20px;
+}
+
+.usuario {
+  float: right;
+}
+
+form {
+  margin: auto 10px;
+  height: 20px;
+}
