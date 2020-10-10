@@ -1,14 +1,12 @@
 <h1>Prueba Mía</h1>
 
 <ng-template #respuesta>
-  <li>
     <div>
       <form (ngSubmit)="crearComentario()">
         <input value="" type="text" name="contenido" [(ngModel)]="nuevoComentarioContenido">
         <button type="submit">Confirmar</button>
       </form>
     </div>
-  </li>
 </ng-template>
 
 <ul>
@@ -33,13 +31,18 @@
         <button (click)="habilitarModoEdicion(comentario)">Editar</button>
       </div>
 
+
       <ul *ngIf="comentario.comentariosHijos != null || comentario.comentariosHijos?.length > 0">
         <ng-container *ngTemplateOutlet="comentariosRecursivos, context:{ $implicit: comentario.comentariosHijos}">
         </ng-container>
       </ul>
 
-      <div *ngIf="modoRespuesta && comentarioEdicion.id == comentario.id">
-        <ng-container *ngTemplateOutlet="respuesta"></ng-container>
+      <div *ngIf="modoRespuesta && comentarioRespuesta.id == comentario.id">
+        <!--<ng-container *ngTemplateOutlet="respuesta"></ng-container>-->
+          <form (ngSubmit)="crearComentario()">
+            <input value="" type="text" name="contenido" [(ngModel)]="nuevoComentarioContenido">
+            <button type="submit">Confirmar</button>
+          </form>
       </div>
 
     </li>
@@ -50,8 +53,10 @@
   </section>
 </ul>
 
-<div *ngIf="modoRespuesta && comentarioEdicion == undefined">
+<button (click)="habilitarModoRespuesta(false, true)">+ Agregar Nuevo Comentario</button>
+
+<div *ngIf="modoRespuesta && comentarioPrincipal">
   <ng-container *ngTemplateOutlet="respuesta"></ng-container>
 </div>
 
-<button>+ Agregar Nuevo Comentario</button>
+

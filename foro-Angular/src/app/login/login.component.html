@@ -8,14 +8,14 @@
 
 <form (ngSubmit)="entrar()">
 
-  <input type="text" [(ngModel)]="usuario" name="usuario"> <br>
-  <input type="password" [(ngModel)]="contrasena" name="contrasena" > <br>
+  <input class="inputT" type="text" [(ngModel)]="usuario" name="usuario"> <br>
+  <input class="inputP" type="password" [(ngModel)]="contrasena" name="contrasena" > <br>
   <!--<li [routerLink]="['/foro/foro-list']"></li>-->
-  <button type="submit" id="login">Log in</button>
+  <button class="buttonLI" type="submit" id="login">Log in</button>
 
 </form>
 
-<button (click)="salir()">log out</button>
+<button class="buttonLO" (click)="salir()">log out</button>
 <pre> {{mensaje}} </pre>
 <pre> {{mensaje2}} </pre>
 

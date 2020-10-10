@@ -17,7 +17,7 @@ public class TestService {
 		return "{\"value\": \"ok\"}";
 	}
     
-    @PreAuthorize("hasRole('ROLE_ADMIN')") // TODO ver http://www.baeldung.com/spring-security-expressions-basic
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_USER')") // TODO ver http://www.baeldung.com/spring-security-expressions-basic
 	@RequestMapping(value = "/restricted-method", produces = "application/json")
     public String restrictedMethod() {
         return "{\"value\": \"ok admin\"}";

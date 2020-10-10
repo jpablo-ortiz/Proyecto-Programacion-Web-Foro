@@ -46,6 +46,7 @@ export class TemaCreateComponent implements OnInit {
       result => {
         console.log(result);
         this.actualizarUsuario();
+        this.router.navigate(['/foro/foro-view', this.foro.id]);
       },
       error => {
         console.error(error);

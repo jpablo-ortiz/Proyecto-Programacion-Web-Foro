@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, forkJoin } from 'rxjs';
 import { Comentario } from './Entidades/comentario';
 import { Foro } from './Entidades/foro';
 import { Tema } from './Entidades/tema';
@@ -170,23 +170,23 @@ export class ForoService {
     return this.put(url, {}, { withCredentials: true });
   }
 
-  public createComentarioPrincipal(contenidoC: string, temaAlQuePertenece: Tema) {
-    const url = environment.foroServiceBaseUrl + '/temas/' + temaAlQuePertenece.id + '/comentarios';
+  public createComentarioPrincipal(contenidoC: string, temaAlQuePertenece: Tema, usuarioAlQuePertenece: Usuario) {
+    const url = environment.foroServiceBaseUrl + '/comentarios/t:' + temaAlQuePertenece.id + '/u:' + usuarioAlQuePertenece.id;
     return this.post(url,
       {
         ranking: 0,
-        fechaPublicacion: Date.now,
+        fecha: Date.now(),
         contenido: contenidoC
       },
       { withCredentials: true });
   }
 
-  public createComentarioSecundario(contenidoC: string, comentarioAlQuePertenece: Comentario) {
-    const url = environment.foroServiceBaseUrl + '/comentarios/' + comentarioAlQuePertenece.id + '/comentarios';
+  public createComentarioSecundario(contenidoC: string, comentarioAlQuePertenece: Comentario, usuarioAlQuePertenece: Usuario) {
+    const url = environment.foroServiceBaseUrl + '/comentarios/c:' + comentarioAlQuePertenece.id + '/u:' + usuarioAlQuePertenece.id;
     return this.post(url,
       {
         ranking: 0,
-        fechaPublicacion: Date.now,
+        fecha: Date.now(),
         contenido: contenidoC
       },
       { withCredentials: true });

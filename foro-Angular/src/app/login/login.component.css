@@ -47,3 +47,50 @@ button:hover{
   background-color: #D69BDC;
   border-color: #D69BDC;
 }
+
+@media screen and (min-width: 1920px){
+
+  main{
+    margin-left: 16.7%;
+  }
+
+  .imgLogIn{
+      float: right;
+      width: 1353px;
+  }
+
+  input{
+    margin-top: 20px;
+    border-radius: 3px;
+    width: 300px;
+    height: 35px;
+    position: absolute;
+  }
+
+  .inputP{
+    margin-top: 50px;
+    border-radius: 3px;
+    width: 300px;
+    height: 35px;
+    position: absolute;
+  }
+
+  .buttonLI{
+    margin-top: 80px;
+    width: 300px;
+    height: 35px;
+    position: absolute;
+  }
+
+  .buttonLO{
+    margin-top: 130px;
+    width: 300px;
+    height: 35px;
+    position: absolute;
+  }
+
+  .title{
+    font-size: 30px;
+  }
+
+}
