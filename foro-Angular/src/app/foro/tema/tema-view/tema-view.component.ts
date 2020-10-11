@@ -145,7 +145,7 @@ export class TemaViewComponent implements OnInit {
     this.comentarioPrincipal = comentarioPrincipal;
     if (comentarioPrincipal)
     {
-      this.comentarioRespuesta.id = -100000; //Id que nunca existirá
+      this.comentarioRespuesta.id = -100000; // Id que nunca existirá
     }
     else
     {

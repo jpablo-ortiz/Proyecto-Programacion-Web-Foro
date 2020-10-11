@@ -46,7 +46,6 @@ export class TemaCreateComponent implements OnInit {
       result => {
         console.log(result);
         this.actualizarUsuario();
-        this.router.navigate(['/foro/foro-view', this.foro.id]);
       },
       error => {
         console.error(error);
@@ -74,7 +73,6 @@ export class TemaCreateComponent implements OnInit {
             data1: this.ForoRepo.getAllComentariosFromUsuario(this.usuarioActual.id).toPromise().then(
               data => {
                 this.usuarioActual.comentarios = data;
-                sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
               },
               error => console.log('Error Obteniendo comentarios del usuario')
             ),
@@ -82,7 +80,6 @@ export class TemaCreateComponent implements OnInit {
             data2: this.ForoRepo.getAllTemasFromUsuario(this.usuarioActual.id).toPromise().then(
               data => {
                 this.usuarioActual.temas = data;
-                sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
               },
               error => console.log('Error Obteniendo temas del usuario')
             )
@@ -90,6 +87,7 @@ export class TemaCreateComponent implements OnInit {
 
         results.subscribe(
           () => {
+            sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
             this.router.navigate(['/foro/foro-view', this.foro.id]);
           }
         );

@@ -1,62 +1,63 @@
-<h1>Prueba Mía</h1>
+<section *ngIf="tema && tema.id">
 
-<ng-template #respuesta>
+  <ng-template #respuesta>
     <div>
       <form (ngSubmit)="crearComentario()">
         <input value="" type="text" name="contenido" [(ngModel)]="nuevoComentarioContenido">
         <button type="submit">Confirmar</button>
       </form>
     </div>
-</ng-template>
+  </ng-template>
 
-<ul>
-  <ng-template #comentariosRecursivos let-list>
-    <li *ngFor="let comentario of list">
-      <div>
-        <form (ngSubmit)="editarComentario()" *ngIf="modoEdicion && comentarioEdicion.id == comentario.id">
-          <input value="{{comentario.contenido}}" type="text" name="contenido"
-            [(ngModel)]="comentarioEdicion.contenido">
-          <button type="submit">Confirmar</button>
-        </form>
-        <p *ngIf="!(modoEdicion && comentarioEdicion.id == comentario.id)">
-          {{comentario.id}}. {{comentario.contenido}} - {{comentario.fecha | date: 'dd/MM/yyyy'}} | Ranking: {{comentario.ranking}}
-        </p>
-        <button (click)="darLike(comentario)">Like</button>
-        <button (click)="darDislike(comentario)">Dislike</button>
-        <button (click)="habilitarModoRespuesta(comentario, false)">Responder Comentario</button>
-      </div>
+  <ul>
+    <ng-template #comentariosRecursivos let-list>
+      <li *ngFor="let comentario of list">
+        <div>
+          <form (ngSubmit)="editarComentario()" *ngIf="modoEdicion && comentarioEdicion.id == comentario.id">
+            <input value="{{comentario.contenido}}" type="text" name="contenido"
+              [(ngModel)]="comentarioEdicion.contenido">
+            <button type="submit">Confirmar</button>
+          </form>
+          <p *ngIf="!(modoEdicion && comentarioEdicion.id == comentario.id)">
+            {{comentario.id}}. {{comentario.contenido}} - {{comentario.fecha | date: 'dd/MM/yyyy'}} | Ranking:
+            {{comentario.ranking}}
+          </p>
+          <button (click)="darLike(comentario)">Like</button>
+          <button (click)="darDislike(comentario)">Dislike</button>
+          <button (click)="habilitarModoRespuesta(comentario, false)">Responder Comentario</button>
+        </div>
 
-      <div class="usuario" *ngIf="esDeUsuario(comentario) == true">
-        <button (click)="eliminarComentario(comentario)">Eliminar</button>
-        <button (click)="habilitarModoEdicion(comentario)">Editar</button>
-      </div>
+        <div class="usuario" *ngIf="esDeUsuario(comentario) == true">
+          <button (click)="eliminarComentario(comentario)">Eliminar</button>
+          <button (click)="habilitarModoEdicion(comentario)">Editar</button>
+        </div>
 
 
-      <ul *ngIf="comentario.comentariosHijos != null || comentario.comentariosHijos?.length > 0">
-        <ng-container *ngTemplateOutlet="comentariosRecursivos, context:{ $implicit: comentario.comentariosHijos}">
-        </ng-container>
-      </ul>
+        <ul *ngIf="comentario.comentariosHijos != null || comentario.comentariosHijos?.length > 0">
+          <ng-container *ngTemplateOutlet="comentariosRecursivos, context:{ $implicit: comentario.comentariosHijos}">
+          </ng-container>
+        </ul>
 
-      <div *ngIf="modoRespuesta && comentarioRespuesta.id == comentario.id">
-        <!--<ng-container *ngTemplateOutlet="respuesta"></ng-container>-->
+        <div *ngIf="modoRespuesta && comentarioRespuesta.id == comentario.id">
+          <!--<ng-container *ngTemplateOutlet="respuesta"></ng-container>-->
           <form (ngSubmit)="crearComentario()">
             <input value="" type="text" name="contenido" [(ngModel)]="nuevoComentarioContenido">
             <button type="submit">Confirmar</button>
           </form>
-      </div>
+        </div>
 
-    </li>
-  </ng-template>
+      </li>
+    </ng-template>
 
-  <section *ngIf="tema.comentarios != null || tema.comentarios?.length > 0">
-    <ng-container *ngTemplateOutlet="comentariosRecursivos, context:{ $implicit: tema.comentarios}"></ng-container>
-  </section>
-</ul>
+    <section *ngIf="tema.comentarios != null || tema.comentarios?.length > 0">
+      <ng-container *ngTemplateOutlet="comentariosRecursivos, context:{ $implicit: tema.comentarios}"></ng-container>
+    </section>
+  </ul>
 
-<button (click)="habilitarModoRespuesta(false, true)">+ Agregar Nuevo Comentario</button>
+  <button (click)="habilitarModoRespuesta(false, true)">+ Agregar Nuevo Comentario</button>
 
-<div *ngIf="modoRespuesta && comentarioPrincipal">
-  <ng-container *ngTemplateOutlet="respuesta"></ng-container>
-</div>
+  <div *ngIf="modoRespuesta && comentarioPrincipal">
+    <ng-container *ngTemplateOutlet="respuesta"></ng-container>
+  </div>
 
-
+</section>

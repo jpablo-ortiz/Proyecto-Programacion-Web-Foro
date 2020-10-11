@@ -19,6 +19,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { TemaCreateComponent } from './foro/tema/tema-create/tema-create.component';
+import { TemaEditComponent } from './foro/tema/tema-edit/tema-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TemaCreateComponent } from './foro/tema/tema-create/tema-create.compone
     ForoListComponent,
     TemaViewComponent,
     LoginComponent,
-    TemaCreateComponent
+    TemaCreateComponent,
+    TemaEditComponent
   ],
   imports: [
     BrowserModule,

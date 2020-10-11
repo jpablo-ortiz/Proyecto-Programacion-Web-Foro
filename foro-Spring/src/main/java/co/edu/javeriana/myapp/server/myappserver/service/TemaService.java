@@ -83,8 +83,6 @@ public class TemaService {
     @PutMapping("/temas/{id}")
     Tema updateTema(@PathVariable Long id, @RequestBody Tema temaDatos) {
         Tema tema = getTema(id);
-        tema.setRanking(temaDatos.getRanking());
-        tema.setFechaPublicacion(temaDatos.getFechaPublicacion());
         tema.setTitulo(temaDatos.getTitulo());
         tema.setContenido(temaDatos.getContenido());
 

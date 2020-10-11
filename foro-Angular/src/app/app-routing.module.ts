@@ -5,6 +5,7 @@ import { ForoListComponent } from './foro/foro-list/foro-list.component';
 import { TemaViewComponent } from './foro/tema/tema-view/tema-view.component';
 import { LoginComponent } from './login/login.component';
 import { TemaCreateComponent } from './foro/tema/tema-create/tema-create.component';
+import { TemaEditComponent } from './foro/tema/tema-edit/tema-edit.component';
 
 const routes: Routes = [
   { path: 'foro/foro-view/:id', component: ForoViewComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'foro/tema/tema-view/:id', component: TemaViewComponent },
   { path: 'login', component: LoginComponent },
   { path: 'foro/tema/tema-create/:id', component: TemaCreateComponent },
+  { path: 'foro/tema/tema-edit/:idForo/:idTema', component: TemaEditComponent },
   { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
 
