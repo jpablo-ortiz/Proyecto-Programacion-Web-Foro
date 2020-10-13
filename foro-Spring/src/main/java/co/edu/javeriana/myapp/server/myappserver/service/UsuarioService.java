@@ -5,6 +5,7 @@ import co.edu.javeriana.myapp.server.myappserver.model.Comentario;
 import co.edu.javeriana.myapp.server.myappserver.model.Tema;
 import co.edu.javeriana.myapp.server.myappserver.model.Usuario;
 import co.edu.javeriana.myapp.server.myappserver.model.UsuarioRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.Foro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,6 +35,16 @@ public class UsuarioService {
             return repository.findById(usuarioId).get().getTemas();
         } else {
             throw new NotFoundException("Temas no encontrados");
+        }
+    }
+
+    @PreAuthorize("hasRole('USER') or hasRole('MOD') or hasRole('ADMIN')")
+    @GetMapping("/usuario/{id}/foros")
+    public Iterable<Foro> getAllForosFromUsuario(@PathVariable("id") Long usuarioId) {
+        if (repository.existsById(usuarioId)) {
+            return repository.findById(usuarioId).get().getForos();
+        } else {
+            throw new NotFoundException("Foro no encontrado");
         }
     }
 

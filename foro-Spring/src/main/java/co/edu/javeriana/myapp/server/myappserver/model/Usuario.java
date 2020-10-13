@@ -34,6 +34,10 @@ public class Usuario {
     @JsonIgnore
     private List<Comentario> comentarios;
 
+    @OneToMany(mappedBy = "usuarioAlQuePertenece")
+    @JsonIgnore
+    private List<Foro> foros;
+
     public Long getId() {
         return this.id;
     }
@@ -109,6 +113,19 @@ public class Usuario {
 
     public Usuario rol(String rol) {
         this.rol = rol;
+        return this;
+    }
+
+    public List<Foro> getForos() {
+        return this.foros;
+    }
+
+    public void setForos(List<Foro> foros) {
+        this.foros = foros;
+    }
+
+    public Usuario foros(List<Foro> foros) {
+        this.foros = foros;
         return this;
     }
 

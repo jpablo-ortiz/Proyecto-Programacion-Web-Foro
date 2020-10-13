@@ -1,28 +1,57 @@
-li {
-  border: solid 2px black;
-  display: inline-flex;
+html{
+  margin-left:210px;
+  margin-right: 240px;
+  margin-top:80px;
 }
 
-div .info {
-  /*border: solid 2px black;*/
-  padding: 15px;
-  margin: 0px auto;
-  display: inline;
+ul{
+  height: 200px;
+  list-style: none;
+  background-color:#cfd8dc;
+  height: 150px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  margin-bottom:80px;
 }
 
-div h2 {
-  margin: 1px;
+.like{
+ width: 40px;
+ margin:3px;
+ margin-top: 10px;
+ border-radius: 30px;
 }
 
-div p {
-  margin: 5px;
-}
-
-button {
-  margin: 10px 10px;
-  height: 20px;
-}
-
-.usuario {
+.buttons{
+  margin-left: 787px;
+  position: absolute;
   float: right;
+}
+
+.like:hover{
+  box-shadow: 3px 3px 5px #6c73bc;
+}
+
+.newT{
+  margin-top:50px;
+  width: 200px;
+  height: 25px;
+  border-radius: 9px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  background-color: #AF70B6;
+  border-color: #AF70B6;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+button:hover{
+  background-color: #D69BDC;
+  border-color: #D69BDC;
+}
+
+
+.usuario{
 }

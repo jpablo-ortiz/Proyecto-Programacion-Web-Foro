@@ -4,8 +4,8 @@ insert into usuario(id, user, password, rol) values (-1, 'user', 'contra', 'ROLE
 insert into usuario(id, user, password, rol) values (-2, 'mod', 'contra',  'ROLE_MOD');
 insert into usuario(id, user, password, rol) values (-3, 'admin', 'contra','ROLE_ADMIN');
 
-insert into foro (id, moderador, titulo) values (-1, true, 'Foro #1');
-insert into foro (id, moderador, titulo) values (-2, false, 'Foro #2');
+insert into foro (id, moderador, titulo, usuario_al_que_pertenece_id) values (-1, true, 'Foro #1', -3);
+insert into foro (id, moderador, titulo, usuario_al_que_pertenece_id) values (-2, false, 'Foro #2', -3);
 
 insert into tema (id, ranking, fecha_publicacion, titulo, contenido, foro_al_que_pertenece_id, usuario_al_que_pertenece_id) values (-1, 2, '2000-01-21', 'Tema #1', 'Este es el Tema #1', -1, -1);
 insert into tema (id, ranking, fecha_publicacion, titulo, contenido, foro_al_que_pertenece_id, usuario_al_que_pertenece_id) values (-2, 0, '2007-01-21', 'Tema #2', 'Este es el Tema #2', -1, -2);

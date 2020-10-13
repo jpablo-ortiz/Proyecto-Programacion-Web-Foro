@@ -1,7 +1,32 @@
 <div>
   <ul *ngFor="let foro of foros">
     <li>
-      <p [routerLink]="['/foro/foro-view', foro.id]">{{foro.id}}. {{foro.titulo}} | {{foro.moderador}} </p>
+      <p class="title" [routerLink]="['/foro/foro-view', foro.id]">{{foro.id}}. {{foro.titulo}} | {{foro.moderador}}
+      </p>
+      <p class="person">
+        <img class="imageP" src="/assets/Images/person1.svg">
+        <img class="imageP" src="/assets/Images/person3.svg">
+        <img class="imageP" src="/assets/Images/person2.svg">
+        <img class="imageP" src="/assets/Images/person4.svg"></p>
     </li>
   </ul>
+
+  <button *ngIf="usuarioActual.rol == 'ADMIN' || usuarioActual.rol == 'ROLE_ADMIN'" (click)="habilitarAgregarForo()">+ Agregar Nuevo Foro</button>
+
+  <div *ngIf="agregarForo">
+    <form (ngSubmit)="crearForo()">
+
+      <div class="form-group">
+        <label for="titulo">Titulo</label>
+        <input value="" type="text" name="titulo" [(ngModel)]="nuevoTitulo">
+      </div>
+
+      <div class="form-group">
+        <label for="titulo">Foro Moderado</label>
+        <input type="checkbox" name="esModerado" [(ngModel)]="nuevoEsModerado">
+      </div>
+
+      <button type="submit">Confirmar</button>
+    </form>
+  </div>
 </div>

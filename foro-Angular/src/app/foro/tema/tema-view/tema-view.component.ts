@@ -5,7 +5,7 @@ import { Tema } from '../../shared/Entidades/tema';
 import { Comentario } from '../../shared/Entidades/comentario';
 import { Auxiliar } from '../../shared/auxiliar';
 import { Usuario } from '../../shared/Entidades/usuario';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-tema-view',
@@ -202,11 +202,20 @@ export class TemaViewComponent implements OnInit {
                 sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
               },
               error => console.log('Error Obteniendo temas del usuario')
+            ),
+
+            data3: this.ForoRepo.getAllForosFromUsuario(this.usuarioActual.id).toPromise().then(
+              data => {
+                this.usuarioActual.foros = data;
+                sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
+              },
+              error => console.log('Error Obteniendo foros del usuario')
             )
           });
 
         results.subscribe(
           () => {
+            sessionStorage.setItem('user', JSON.stringify(this.usuarioActual));
             this.findTema(this.id, false);
           }
         );

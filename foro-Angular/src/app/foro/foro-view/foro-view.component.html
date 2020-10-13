@@ -1,24 +1,31 @@
-<div *ngIf="foro && foro.id">
+<html>
+
+ <div *ngIf="foro && foro.id">
 
   <h1>{{foro.id}} {{foro.titulo}}</h1>
-  <h1>HOLAaaaaa2</h1>
 
   <ul *ngFor="let tema of foro.temas">
     <li>
       <div class="info" [routerLink]="['/foro/tema/tema-view', tema.id]">
-        <h2>{{tema.titulo}}</h2>
+        <h2 class="title">{{tema.titulo}}</h2>
         <p>{{tema.fechaPublicacion | date: 'dd/MM/yyyy'}}, {{tema.contenido}} | Ranking: {{tema.ranking}}</p>
-      </div>
-      <button (click)="darLike(tema)">Like</button>
-      <button (click)="darDislike(tema)">Dislike</button>
 
-      <div class="usuario" *ngIf="esDeUsuario(tema) == true">
+      <p class="buttons">
+      <img class="like" src="/assets/Images/like.svg" (click)="darLike(tema)">
+      <img class="like" src="/assets/Images/dislike.svg"(click)="darDislike(tema)">
+    </p>
+    </div>
+
+
+     <div class="usuario" *ngIf="esDeUsuario(tema) == true">
         <button (click)="eliminarTema(tema)">Eliminar</button>
         <button [routerLink]="['/foro/tema/tema-edit', foro.id, tema.id]">Editar</button>
       </div>
     </li>
   </ul>
 
-  <button [routerLink]="['/foro/tema/tema-create', foro.id]">+ Crear nuevo Tema</button>
+  <button class="newT" [routerLink]="['/foro/tema/tema-create', foro.id]">+ Crear nuevo Tema</button>
   <!--<button (click)="crearNuevoTema()">+</button>-->
 </div>
+
+</html>

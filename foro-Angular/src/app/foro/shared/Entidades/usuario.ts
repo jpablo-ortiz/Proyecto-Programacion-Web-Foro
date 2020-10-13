@@ -1,4 +1,5 @@
 import { Comentario } from './comentario';
+import { Foro } from './foro';
 import { Tema } from './tema';
 
 export class Usuario {
@@ -9,6 +10,7 @@ export class Usuario {
   public rol: string;
   public temas: Tema[];
   public comentarios: Comentario[];
+  public foros: Foro[];
 
   constructor(id: number, user: string, password: string, rol: string) {
     this.id = id;
@@ -17,6 +19,7 @@ export class Usuario {
     this.rol = rol;
     this.temas = [];
     this.comentarios = [];
+    this.foros = [];
   }
 
 }

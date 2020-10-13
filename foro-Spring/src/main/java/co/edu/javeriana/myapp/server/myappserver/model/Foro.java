@@ -2,6 +2,7 @@ package co.edu.javeriana.myapp.server.myappserver.model;
 
 import java.util.List;
 
+import javax.persistence.ManyToOne;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,6 +23,10 @@ public class Foro {
 
     @NotNull
     private String titulo;
+
+    @ManyToOne
+    @NotNull
+    private Usuario usuarioAlQuePertenece;
 
     @OneToMany(mappedBy = "foroAlQuePertenece")
     @JsonIgnore
@@ -83,4 +88,16 @@ public class Foro {
         return this;
     }
 
+    public Usuario getUsuarioAlQuePertenece() {
+        return this.usuarioAlQuePertenece;
+    }
+
+    public void setUsuarioAlQuePertenece(Usuario usuarioAlQuePertenece) {
+        this.usuarioAlQuePertenece = usuarioAlQuePertenece;
+    }
+
+    public Foro usuarioAlQuePertenece(Usuario usuarioAlQuePertenece) {
+        this.usuarioAlQuePertenece = usuarioAlQuePertenece;
+        return this;
+    }
 }

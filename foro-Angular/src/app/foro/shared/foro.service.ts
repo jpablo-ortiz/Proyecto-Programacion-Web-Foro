@@ -55,14 +55,23 @@ export class ForoService {
   /**********/
   /* FOROS */
   /**********/
+  public createForo(nuevoTitulo: string, nuevoEsModerado: boolean, usuarioAlQuePertenece: Usuario) {
+    const url = environment.foroServiceBaseUrl + '/foros/u:' + usuarioAlQuePertenece.id;
+    return this.post(url,
+      {
+        titulo: nuevoTitulo,
+        moderador: nuevoEsModerado
+      },
+      { withCredentials: true });
+  }
 
   public getAllForos() {
     const url = environment.foroServiceBaseUrl + '/foros';
     return this.get<Foro[]>(url, { withCredentials: true });
   }
 
-  public getForo(foroId: number) {
-    const url = environment.foroServiceBaseUrl + '/foros/' + foroId;
+  public getForo(usuarioId: number) {
+    const url = environment.foroServiceBaseUrl + '/foros/' + usuarioId;
     return this.get<Foro>(url, { withCredentials: true });
   }
 
@@ -139,6 +148,12 @@ export class ForoService {
   public getAllTemasFromUsuario(usuarioId: number) {
     const url = environment.foroServiceBaseUrl + '/usuario/' + usuarioId + '/temas/';
     return this.get<Tema[]>(url, { withCredentials: true });
+  }
+
+
+  public getAllForosFromUsuario(usuarioId: number) {
+    const url = environment.foroServiceBaseUrl + '/usuario/' + usuarioId + '/foros';
+    return this.get<Foro[]>(url, { withCredentials: true });
   }
 
   /***************/
